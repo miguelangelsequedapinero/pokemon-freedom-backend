@@ -8,14 +8,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-  var id = req.params;
+  var id = req.params.id;
   var idAsNumber = parseInt(id, 10);
 
-  const foundPokemon = pokedex.find((singlePokemon) => {
+  const foundPoke = pokedex.find((singlePokemon) => {
       return singlePokemon.id === idAsNumber;
     });
 
-  res.send(id);
+  res.send(foundPoke);
 
 });
 
@@ -23,11 +23,11 @@ router.get('/:id/:info', function(req, res, next) {
   var { id, info } = req.params;
   var idAsNumber = parseInt(id, 10);
 
-  const foundPokemon = pokedex.find((singlePokemon) => {
+  const foundPoke = pokedex.find((singlePokemon) => {
       return singlePokemon.id === idAsNumber;
     });
 
-  res.send(foundPokemon[info]);
+  res.send(foundPoke[info]);
 
 });
 
