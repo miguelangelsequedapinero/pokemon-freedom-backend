@@ -7,7 +7,8 @@ var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var pokemonRouter =require('./routes/pokemon');
+var pokemonRouter = require('./routes/pokemon');
+var loginRouter = require ('./routes/login');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(cors())
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/pokemon', pokemonRouter);
+app.use('/login',loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,6 +45,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000);
 
 module.exports = app;
