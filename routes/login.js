@@ -1,17 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const md5 = require('md5');
-const { Pool } = require('pg');
-
-const pool = new Pool({
-    user: 'jdccyfex',
-    host: 'balarama.db.elephantsql.com',
-    database: 'jdccyfex',
-    password: 'XysbeUw1JJydkjJwrVwDcoapCZtVc0Kc',
-    port: 5432,
-});
-
-pool.connect();
+const pool = require('../db-connector/pool');
 
 router.get('/', (req, res) => {
     res.send('Please Use POST!');
