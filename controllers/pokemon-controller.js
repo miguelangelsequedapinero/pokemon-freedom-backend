@@ -26,6 +26,7 @@ const pokemonGetId = (req, res) => {
 
 const pokemonGet = function (req, res) {
     res.send(pokedex);
+};    
 
 module.exports = {
         pokemonGetIdInfo,
