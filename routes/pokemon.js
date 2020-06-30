@@ -1,34 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var pokedex = require('./pokedex.json')
+const express = require('express');
+const pokemonController = require('../controllers/pokemon-controller');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send(pokedex);
-});
+const router = express.Router();
 
-router.get('/:id', function (req, res, next) {
-  var id = req.params.id;
-  var idAsNumber = parseInt(id, 10);
-
-  const foundPoke = pokedex.find((singlePokemon) => {
-      return singlePokemon.id === idAsNumber;
-    });
-
-  res.send(foundPoke);
-
-});
-
-router.get('/:id/:info', function(req, res, next) {
-  var { id, info } = req.params;
-  var idAsNumber = parseInt(id, 10);
-
-  const foundPoke = pokedex.find((singlePokemon) => {
-      return singlePokemon.id === idAsNumber;
-    });
-
-  res.send(foundPoke[info]);
-
-});
+router.get('/:id/:info', pokemonController.pokemonGetIdInfo);
+router.get('/:id', pokemonController.pokemonGetId);
+router.get('/', pokemonController.pokemonGet);
 
 module.exports = router;
